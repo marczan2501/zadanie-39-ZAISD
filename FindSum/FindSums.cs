@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -37,42 +37,30 @@ namespace FindSum
                         k -= 1;
                         j += 1;
                     }
-                    else
-                    {
-                        if (sum > t)
-                        {
-                            k -= 1;
-                        }
-                        else
-                        {
-                            j += 1;
-                        }
-                    }
+                    else if (sum > t) k -= 1; 
+                    else  j += 1;  
                 }
             }
             timer.Stop();
             Console.WriteLine("Znaleziono " + found + " rozwiązań w czasie " + timer.ElapsedMilliseconds + "ms");
-        }
-
-        // Tworzenie tablicy
+        }  
+        // Tworzenie tablicy wypełnionej losowymi elementami
 
         private int[] createTab(int size)
-        {
-            int i = 0;
+        {  
             List<int> tab = new List<int>();
             Random random = new Random();
 
-            for (i = 0; i < size; i++)
+            for (int i = 0; i < size; i++)
             {
                 int number = -size + random.Next(size * 3);
-                if (!tab.Contains(number))
-                    tab.Add(number);
+                if (!tab.Contains(number)) tab.Add(number);
             }
 
             return tab.ToArray();
         }
 
-        // Quick Sort
+        // Quick Sort stworzonej tablicy
 
         private int[] quick_sort(int[] keys, int left, int right)
         {
